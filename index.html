@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hitung mundur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #d8e8ff, #ffe2f3, #ffffff);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      font-family: 'Handlee', cursive;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      color: #ff78b5;
+      font-size: 2.5rem;
+      animation: float 3s ease-in-out infinite;
+      text-shadow: 2px 2px 0 #fff;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    #countdown {
+      margin-top: 2rem;
+      font-size: 2.3rem;
+      color: #5c5ce6;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 20px #ffd6ea;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff9acb;
+      font-size: 1.4rem;
+      animation: floatHeart 5s ease-in-out infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(0.8); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌸 hihihih bentar lagii adaaa sesuatuu spesiall nii 🩵</h1>
+  <div id="countdown">...</div>
+
+  <script>
+    
+    if (localStorage.getItem("surprise_done") === "true") {
+      window.location.href = "happybirthday.html";
+    }
+
+    const targetDate = new Date("Nov 10, 2025 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        localStorage.setItem("surprise_done", "true");
+        window.location.href = "happybirthday.html";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `
+        ${days} hari 💫 ${hours} jam 🌸<br>
+        ${minutes} menit 💕 ${seconds} detik
+      `;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const hearts = ['💖','💗','💓','💞','💘','🩷'];
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+      heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 700);
+  </script>
+
+</body>
+</html>

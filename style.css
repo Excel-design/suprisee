@@ -1,0 +1,301 @@
+/* ------------------ BODY & BACKGROUND ------------------ */
+body {
+  font-family: 'Comic Neue', 'Handlee', cursive;
+  background: linear-gradient(180deg, #e0f8ff, #fff0fb); /* lebih terang, tetap soft */
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Background buku: garis halus dan titik-titik */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* ------------------ MAIN AREA ------------------ */
+.main-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.scrap-page {
+  background: linear-gradient(180deg, #fffafc, #faffff);
+  border: 3px dashed #c7e4ff;
+  border-radius: 25px;
+  padding: 35px 30px 45px;
+  width: 95%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+  transform: rotate(-1deg);
+  animation: flipIn 1.2s ease-out forwards;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* 🌸 Corak garis diagonal pastel di belakang isi */
+.scrap-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(173, 216, 255, 0.25) 0px,
+      rgba(173, 216, 255, 0.25) 8px,
+      rgba(255, 223, 250, 0.25) 8px,
+      rgba(255, 223, 250, 0.25) 16px,
+      rgba(255, 255, 255, 0.3) 16px,
+      rgba(255, 255, 255, 0.3) 24px
+    );
+  opacity: 0.5;
+  border-radius: 25px;
+  z-index: 0; /* di bawah isi */
+  pointer-events: none; /* ⛔️ ini yang bikin tombol tetap bisa diklik */
+}
+
+/* 💗 Lapisan “bayangan buku” tipis */
+.scrap-page::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ffd6ec;
+  border-radius: 25px;
+  transform: rotate(2deg);
+  z-index: -1; /* paling belakang */
+  pointer-events: none; /* biar gak ganggu elemen */
+}
+
+
+
+
+/* ------------------ TITLES ------------------ */
+.judul {
+  text-align: center;
+  font-size: 2rem;
+  color: #246b90; /* lebih cerah */
+  font-weight: 700;
+}
+
+.subjudul {
+  text-align: center;
+  font-size: 1rem;
+  color: #5f8aa2;
+  margin-bottom: 18px;
+}
+
+/* ------------------ PHOTO ------------------ */
+.photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  transform: rotate(2deg);
+}
+
+.photo {
+  width: 120px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 0 #bdefff; /* lebih cerah */
+  border: 2px solid #a0e0ff;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.07) rotate(4deg);
+}
+
+/* ------------------ TAPE ------------------ */
+.tape {
+  position: absolute;
+  width: 60px;
+  height: 25px;
+  background: rgba(255, 248, 215, 0.9);
+  box-shadow: 1px 2px 0 rgba(0,0,0,0.12);
+  border-radius: 4px;
+}
+
+.tape-left { top: -12px; left: 25px; transform: rotate(-15deg); }
+.tape-right { top: -12px; right: 25px; transform: rotate(12deg); }
+
+/* ------------------ NOTE ------------------ */
+.note {
+  background: #fff8fe;
+  border: 2px dashed #f9bada;
+  border-radius: 20px;
+  padding: 18px 20px;
+  color: #355d73;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  transform: rotate(-1.5deg);
+  box-shadow: 2px 2px 0 #ffe1f2; /* lebih cerah */
+  min-height: 110px;
+  background-image: linear-gradient(transparent 95%, #fff0f8 95%);
+  background-size: 100% 25px;
+}
+
+/* ------------------ BUTTONS ------------------ */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  padding: 9px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn.pastel {
+  background: #c0f5ff;
+  color: #1e6f91;
+  border: 2px solid #8de1ff;
+  box-shadow: 2px 4px 0 #aee9ff;
+}
+
+.btn.pink {
+  background: #ffe5f3;
+  color: #b0457f;
+  border: 2px solid #ffc4de;
+  box-shadow: 2px 4px 0 #ffd7ec;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* ------------------ FOOTER ------------------ */
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 20px;
+  color: #5d8fa0;
+  font-style: italic;
+}
+
+/* ------------------ MODAL ------------------ */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}
+
+.modal-content {
+  background: #fffdfd;
+  border: 3px dashed #e5a4c4;
+  border-radius: 25px;
+  padding: 30px;
+  width: 85%;
+  max-width: 400px;
+  color: #3e6278;
+  text-align: center;
+  animation: popIn 0.7s ease-out;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #666;
+}
+
+/* ------------------ ANIMATIONS ------------------ */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes flipIn {
+  from { transform: rotateY(90deg); opacity: 0; }
+  to { transform: rotateY(0deg); opacity: 1; }
+}
+
+/* ------------------ BUTTERFLIES ------------------ */
+.butterfly {
+  position: absolute;
+  width: 60px;
+  opacity: 0.85;
+  animation: floaty 12s infinite ease-in-out;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(60px, -35px) rotate(12deg); }
+  50% { transform: translate(-35px, 45px) rotate(-10deg); }
+  75% { transform: translate(25px, -25px) rotate(6deg); }
+}
+
+/* ------------------ BACKGROUND PARTICLE CANVAS ------------------ */
+#bgParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+/* ------------------ FOTO BARU ------------------ */
+.new-photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+  transform: rotate(-2deg);
+}
+
+.new-photo {
+  width: 130px; /* sedikit lebih besar dari foto kado */
+  border-radius: 25px;
+  border: 2px solid #ffdee9;
+  box-shadow: 3px 3px 0 #ffe3f2;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.new-photo:hover {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 5px 5px 8px #ffd6ec;
+}
+
+/* TAPE lucu untuk foto baru */
+.new-photo-wrap .tape-left {
+  top: -10px;
+  left: 20px;
+  transform: rotate(-18deg);
+  background: rgba(255, 250, 200, 0.85);
+}
+
+.new-photo-wrap .tape-right {
+  top: -10px;
+  right: 20px;
+  transform: rotate(15deg);
+  background: rgba(255, 250, 200, 0.85);
+}

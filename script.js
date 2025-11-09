@@ -1,7 +1,7 @@
 
 const lines = [
   "alllooooo Pipit 🩵",
-  "selamat ulang tahun yangg ke 17 ya—semoga sehat selalu,panjang umur,di lancarkan rezekinya,di mudahkan urusannyaa,suksee dunia & akhirat , dan semoga apa yang di citaa citainn bisaa tercapaii,semogaa di jauhkan juga dari marabahaya,dan semoga di jauhkan dari kemaksiatan/hall hall yang buatt dosaa",
+  "selamat ulang tahun yangg ke 17 ya—semoga sehat selalu,panjang umur,di lancarkan rezekinya,di mudahkan urusannyaa,suksess dunia & akhirat , dan semoga apa yang di citaa citainn bisaa tercapaii,semogaa di jauhkan juga dari marabahaya,dan semoga di jauhkan dari kemaksiatan/hall hall yang buatt dosaa",
   "semoga setiap hari pipitt dipenuhi doa baik,orangg orangg baikk,selaluu bahagiaa,selalu semangatt,selalu jadi orang baikk,istiqomah beribadahnya , jangann pernah putus doanyaa aminn",
   "tetapp jadii pribadiii pipitt yangg baikk yaa,patuhh sama orang tuaa,rajinn belajarr,dan lakukann hall hall positiff tiapp harinyaa"
 ];
